@@ -15,14 +15,15 @@ const filename = "torrents.rss";
     rss: {
       _attributes: {
         version: "2.0"
-      }
-    },
-    channel: {
-      title: {
-        _text: "The Americans EZTV"
       },
-      link: {
-        _text: "http://eztv.io"
+      channel: {
+        title: {
+          _text: "The Americans EZTV"
+        },
+        link: {
+          _text: "http://eztv.io"
+        },
+        item: {}
       }
     }
   };
@@ -45,13 +46,8 @@ const filename = "torrents.rss";
     return obj;
   });
 
-  const finalJSON = {
-    ...base,
-    channel: {
-      item: items,
-      ...base.channel
-    }
-  };
+  base.rss.channel = items;
+  const finalJSON = base;
   const rss = convert(JSON.stringify(finalJSON), {
     compact: true,
     ignoreComment: true,
