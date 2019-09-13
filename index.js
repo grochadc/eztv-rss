@@ -17,6 +17,9 @@ const filename = "torrents.rss";
         version: "2.0"
       },
       channel: {
+        description: {
+          _text: "Torrents RSS from eztv"
+        },
         title: {
           _text: "The Americans EZTV"
         },
@@ -35,11 +38,12 @@ const filename = "torrents.rss";
   const items = data.torrents.map(torrent => {
     const obj = {
       title: { _text: torrent.title },
-      guid: { _text: torrent.hash },
+      guid: { _text: torrent.hash, _attributes: { isPermaLink: false } },
       enclosure: {
         _attributes: {
-          url: torrent.torrent_url,
-          type: "application/x-bittorrent"
+          url: torrent.magnet_url,
+          type: "application/x-bittorrent",
+          length: torrent.size_bytes
         }
       }
     };
