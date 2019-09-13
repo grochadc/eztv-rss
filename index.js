@@ -46,7 +46,7 @@ const filename = "torrents.rss";
     return obj;
   });
 
-  base.rss.channel = items;
+  base.rss.channel.item = items;
   const finalJSON = base;
   const rss = convert(JSON.stringify(finalJSON), {
     compact: true,
