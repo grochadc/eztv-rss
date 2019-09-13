@@ -41,9 +41,8 @@ const filename = "torrents.rss";
       guid: { _text: torrent.hash, _attributes: { isPermaLink: false } },
       enclosure: {
         _attributes: {
-          url: torrent.magnet_url,
-          type: "application/x-bittorrent",
-          length: torrent.size_bytes
+          url: torrent.torrent_url,
+          type: "application/x-bittorrent"
         }
       }
     };
